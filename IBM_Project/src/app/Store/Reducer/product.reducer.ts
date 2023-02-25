@@ -3,6 +3,7 @@ import { getProducts } from '../Action/product.actions';
 import { Product } from 'src/app/Models/product';
 
 export interface ProductState{
+  router: any;
   product:Product[];
 }
 

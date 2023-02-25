@@ -1,92 +1,13 @@
-<div class="wrapper">
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Main content -->
-      <section class="content">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-12">
-              <div class="card">
+<table mat-table [dataSource]="dataValue" class="mat-elevation-z8">
+  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let product">{{ product[column] }}</td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let productrow; columns: displayedColumns"></tr>
+</table>
+<mat-paginator #paginator [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true" [length]="totalSize"
+[pageIndex]="currentPage" (page)="pageEvent = handlePage($event)"> ></mat-paginator>
 
-                <!-- /.card-header -->
-                <div class="card-body">
-                  <table id="example2" class="table table-bordered table-hover" data-page-length='10'>
-                    <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>UID</th>
-                      <th>Blend Name</th>
-                      <th>Origin</th>
-                      <th>Variety</th>
-                      <th>Notes</th>
-                      <th>Intensifier</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td>9120</td>
-                      <td>75c030ea-64d3-4659-bf4b-0e0410bcf958</td>
-                      <td>Veranda Pie</td>
-                      <td>Chiriqui, Panama</td>
-                      <td>Sarchimor</td>
-                      <td>lingering, juicy, banana, blueberry, white grape"</td>
-                      <td>dense</td>
-                    </tr>
-                    <tr>
-                      <td>5200</td>
-                      <td>0c01cbb1-4df4-440d-961a-e7665c9898d3</td>
-                      <td>Postmodern Choice</td>
-                      <td>Kayanza, Burundi</td>
-                      <td>Gesha</td>
-                      <td>mild, slick, cinnamon, snow pea, cacao nibs"</td>
-                      <td>unbalanced</td>
-                    </tr>
-                    <tr *ngFor = "let value of result">
-                      <td>{{value.id}}</td>
-                      <td>{{value.uid}}</td>
-                      <td>{{value.blend_name}}</td>
-                      <td>{{value.origin}}</td>
-                      <td>{{value.variety}}</td>
-                      <td>{{value.notes}}</td>
-                      <td>{{value.intensifier}}</td>
-                    </tr>
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>ID</th>
-                        <th>UID</th>
-                        <th>Blend Name</th>
-                        <th>Origin</th>
-                        <th>Variety</th>
-                        <th>Notes</th>
-                        <th>Intensifier</th>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-                <!-- /.card-body -->
-              </div>
-              <!-- /.card -->
-  
-   
-              <!-- /.card -->
-            </div>
-            <!-- /.col -->
-          </div>
-          <!-- /.row -->
-        </div>
-        <!-- /.container-fluid -->
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-  
-  
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
-  
+<button (click)="loadMoreData()" [hidden]="dataLoaded">Load Data</button>

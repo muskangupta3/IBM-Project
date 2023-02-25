@@ -1,15 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "schematicCollections": [
-      "@ngrx/schematics",
-      "@ngrx/schematics"
-    ]
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "IBM_Project": {
+    "IBMProject": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -19,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ibm-project",
+            "outputPath": "dist/ibmproject",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -33,8 +27,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -67,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "IBM_Project:build:production"
+              "browserTarget": "IBMProject:build:production"
             },
             "development": {
-              "browserTarget": "IBM_Project:build:development"
+              "browserTarget": "IBMProject:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "IBM_Project:build"
+            "browserTarget": "IBMProject:build"
           }
         },
         "test": {
